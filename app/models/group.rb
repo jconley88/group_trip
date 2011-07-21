@@ -1,2 +1,3 @@
-class Group < ActiveRecord::Base
+class Group
+  Mongoid::Document
 end
