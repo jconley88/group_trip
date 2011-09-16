@@ -2,7 +2,6 @@ GroupTrip::Application.routes.draw do
   devise_for :users
 
   resources :users
-
   resources :groups
 
   # The priority is based upon order of creation:
@@ -62,5 +61,5 @@ GroupTrip::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
 
-  root :to => "home#index"
+  root :to => "groups#index"
 end

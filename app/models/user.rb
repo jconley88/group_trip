@@ -5,6 +5,8 @@ class User
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_and_belongs_to_many :groups
+
   field :first_name, :type => String
   field :last_name, :type => String
   field :username, :type => String
@@ -13,8 +15,4 @@ class User
   field :state, :type => String
   field :zip, :type => String
   field :email, :type => String
-  attr_accessor :login
-
-  attr_accessible :username
-  attr_accessible :login
 end
