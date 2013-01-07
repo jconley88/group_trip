@@ -1,15 +1,28 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Total expense:</b>
-  <%= @group.total_expense %>
-</p>
-
-<p>
   <b>Name:</b>
   <%= @group.name %>
 </p>
 
+<h2>Expenses</h2>
+<p>
+  Total Expenses: <%= @group.expenses.total %>
+</p>
+  <% @expenses.each do |expense| %>
+    <p>
+      <%= "#{number_to_currency(expense.amount)} for #{expense.name} - #{expense.user.full_name}" %>
+    </p>
+  <% end %>
+
+<h2>Members</h2>
+  <% @members.each do |member| %>
+    <p>
+      <%= member.full_name %>
+      - Spent
+      <%= number_to_currency(member.summed_expenses_by_group(@group)) %>
+    </p>
+  <% end %>
 
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %>

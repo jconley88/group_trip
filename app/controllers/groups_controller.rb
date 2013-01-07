@@ -16,6 +16,8 @@ class GroupsController < ApplicationController
   # GET /groups/1.xml
   def show
     @group = Group.find(params[:id])
+    @members = @group.members
+    @expenses = @group.expenses
 
     respond_to do |format|
       format.html # show.html.erb
@@ -42,7 +44,7 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.xml
   def create
-    @group = Group.new(params[:group])
+    @group = current_user.groups.build(params[:group])
 
     respond_to do |format|
       if @group.save

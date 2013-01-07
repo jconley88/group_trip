@@ -56,4 +56,12 @@ class User
   field :state, :type => String
   field :zip, :type => String
   field :email, :type => String
+
+  def full_name
+    first_name + ' ' + last_name
+  end
+
+  def summed_expenses_by_group(group)
+    Expense.summed_by_user_and_group(self, group)
+  end
 end

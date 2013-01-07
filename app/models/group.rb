@@ -11,4 +11,8 @@ class Group
       end
     end
   end
+
+  def average_expense
+    expenses.total / members.count
+  end
 end
