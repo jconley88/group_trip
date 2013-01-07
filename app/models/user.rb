@@ -45,7 +45,8 @@ class User
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_and_belongs_to_many :groups
+  has_and_belongs_to_many :groups, inverse_of: :members
+  has_many :expenses
 
   field :first_name, :type => String
   field :last_name, :type => String
